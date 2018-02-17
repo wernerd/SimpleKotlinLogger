@@ -1,0 +1,59 @@
+import org.ajoberstar.grgit.Grgit
+
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    // See
+    // http://mrhaki.blogspot.com/2015/04/gradle-goodness-use-git-commit-id-in.html
+    ext {
+        // Open the Git repository by checking for GIT_DIR and/or walking up
+        // from the current working directory.
+        git = Grgit.open()
+        // Get the jgit interface to the repository
+        // jgit = git.repository.jgit
+    }
+
+    // Return either the property named by `propName`, or `defVal` if the
+    // property is absent. It is the caller's responsibility to ensure that the
+    // `defVal` is the same data type as the property should be.
+    // This is a closure because it relies on the `project` value.
+    def getVal = { String propName, Object defVal ->
+        project.findProperty(propName) ?: defVal
+    }
+
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.example.werner.logger"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'BUILD_COMMIT', dquote(getVal('build_commit', git.head().abbreviatedId))
+        buildConfigField 'String', 'BUILD_DATE', dquote(getVal('build_date', iso8601()))
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:design:27.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
