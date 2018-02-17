@@ -3,18 +3,15 @@ package com.example.werner.logger
 import android.app.ListActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import java.util.*
 
 class ShowListActivity : ListActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val logList = LoggerApp.listLogAppender
-        val logData = logList.logMessages
-
+        val logData = LoggerApp.listLogAppender.logMessages
         // Sort data, first field is time. Need to do this because persistence function uses a Set
-        Collections.sort<String>(logData)
+        logData.sort()
 
         val head = "Commit: " + BuildConfig.BUILD_COMMIT + ", built: " + BuildConfig.BUILD_DATE
         // First String is build/commit info

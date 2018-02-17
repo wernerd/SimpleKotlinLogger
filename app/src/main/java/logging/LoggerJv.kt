@@ -105,8 +105,6 @@ interface LoggerJv {
      * Log a message at the TRACE level according to the specified format
      * and argument.
      *
-     *
-     *
      * This form avoids superfluous object creation when the logger
      * is disabled for the TRACE level.
      *
@@ -119,8 +117,6 @@ interface LoggerJv {
     /**
      * Log a message at the TRACE level according to the specified format
      * and arguments.
-     *
-     *
      *
      * This form avoids superfluous object creation when the logger
      * is disabled for the TRACE level.
@@ -135,8 +131,6 @@ interface LoggerJv {
     /**
      * Log a message at the TRACE level according to the specified format
      * and arguments.
-     *
-     *
      *
      * This form avoids superfluous string concatenation when the logger
      * is disabled for the TRACE level. However, this variant incurs the hidden
@@ -160,73 +154,6 @@ interface LoggerJv {
      */
     fun trace(msg: String, t: Throwable)
 
-    /**
-     * Similar to [.isTraceEnabled] method except that the
-     * marker data is also taken into account.
-     *
-     * @param marker The marker data to take into consideration
-     * @return True if this LoggerJv is enabled for the TRACE level,
-     * false otherwise.
-     *
-     * @since 1.4
-     */
-    fun isTraceEnabled(marker: Marker): Boolean
-
-    /**
-     * Log a message with the specific Marker at the TRACE level.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param msg    the message string to be logged
-     * @since 1.4
-     */
-    fun trace(marker: Marker, msg: String)
-
-    /**
-     * This method is similar to [.trace] method except that the
-     * marker data is also taken into consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg    the argument
-     * @since 1.4
-     */
-    fun trace(marker: Marker, format: String, arg: Any)
-
-    /**
-     * This method is similar to [.trace]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg1   the first argument
-     * @param arg2   the second argument
-     * @since 1.4
-     */
-    fun trace(marker: Marker, format: String, arg1: Any, arg2: Any)
-
-    /**
-     * This method is similar to [.trace]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker   the marker data specific to this log statement
-     * @param format   the format string
-     * @param argArray an array of arguments
-     * @since 1.4
-     */
-    fun trace(marker: Marker, format: String, vararg argArray: Any)
-
-    /**
-     * This method is similar to [.trace] method except that the
-     * marker data is also taken into consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param msg    the message accompanying the exception
-     * @param t      the exception (throwable) to log
-     * @since 1.4
-     */
-    fun trace(marker: Marker, msg: String, t: Throwable)
 
     /**
      * Log a message at the DEBUG level.
@@ -238,8 +165,6 @@ interface LoggerJv {
     /**
      * Log a message at the DEBUG level according to the specified format
      * and argument.
-     *
-     *
      *
      * This form avoids superfluous object creation when the logger
      * is disabled for the DEBUG level.
@@ -253,8 +178,6 @@ interface LoggerJv {
      * Log a message at the DEBUG level according to the specified format
      * and arguments.
      *
-     *
-     *
      * This form avoids superfluous object creation when the logger
      * is disabled for the DEBUG level.
      *
@@ -267,8 +190,6 @@ interface LoggerJv {
     /**
      * Log a message at the DEBUG level according to the specified format
      * and arguments.
-     *
-     *
      *
      * This form avoids superfluous string concatenation when the logger
      * is disabled for the DEBUG level. However, this variant incurs the hidden
@@ -292,67 +213,6 @@ interface LoggerJv {
     fun debug(msg: String, t: Throwable)
 
     /**
-     * Similar to [.isDebugEnabled] method except that the
-     * marker data is also taken into account.
-     *
-     * @param marker The marker data to take into consideration
-     * @return True if this LoggerJv is enabled for the DEBUG level,
-     * false otherwise.
-     */
-    fun isDebugEnabled(marker: Marker): Boolean
-
-    /**
-     * Log a message with the specific Marker at the DEBUG level.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param msg    the message string to be logged
-     */
-    fun debug(marker: Marker, msg: String)
-
-    /**
-     * This method is similar to [.debug] method except that the
-     * marker data is also taken into consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg    the argument
-     */
-    fun debug(marker: Marker, format: String, arg: Any)
-
-    /**
-     * This method is similar to [.debug]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg1   the first argument
-     * @param arg2   the second argument
-     */
-    fun debug(marker: Marker, format: String, arg1: Any, arg2: Any)
-
-    /**
-     * This method is similar to [.debug]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker    the marker data specific to this log statement
-     * @param format    the format string
-     * @param arguments a list of 3 or more arguments
-     */
-    fun debug(marker: Marker, format: String, vararg arguments: Any)
-
-    /**
-     * This method is similar to [.debug] method except that the
-     * marker data is also taken into consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param msg    the message accompanying the exception
-     * @param t      the exception (throwable) to log
-     */
-    fun debug(marker: Marker, msg: String, t: Throwable)
-
-    /**
      * Log a message at the INFO level.
      *
      * @param msg the message string to be logged
@@ -362,8 +222,6 @@ interface LoggerJv {
     /**
      * Log a message at the INFO level according to the specified format
      * and argument.
-     *
-     *
      *
      * This form avoids superfluous object creation when the logger
      * is disabled for the INFO level.
@@ -377,8 +235,6 @@ interface LoggerJv {
      * Log a message at the INFO level according to the specified format
      * and arguments.
      *
-     *
-     *
      * This form avoids superfluous object creation when the logger
      * is disabled for the INFO level.
      *
@@ -391,8 +247,6 @@ interface LoggerJv {
     /**
      * Log a message at the INFO level according to the specified format
      * and arguments.
-     *
-     *
      *
      * This form avoids superfluous string concatenation when the logger
      * is disabled for the INFO level. However, this variant incurs the hidden
@@ -416,66 +270,6 @@ interface LoggerJv {
     fun info(msg: String, t: Throwable)
 
     /**
-     * Similar to [.isInfoEnabled] method except that the marker
-     * data is also taken into consideration.
-     *
-     * @param marker The marker data to take into consideration
-     * @return true if this logger is warn enabled, false otherwise
-     */
-    fun isInfoEnabled(marker: Marker): Boolean
-
-    /**
-     * Log a message with the specific Marker at the INFO level.
-     *
-     * @param marker The marker specific to this log statement
-     * @param msg    the message string to be logged
-     */
-    fun info(marker: Marker, msg: String)
-
-    /**
-     * This method is similar to [.info] method except that the
-     * marker data is also taken into consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg    the argument
-     */
-    fun info(marker: Marker, format: String, arg: Any)
-
-    /**
-     * This method is similar to [.info]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg1   the first argument
-     * @param arg2   the second argument
-     */
-    fun info(marker: Marker, format: String, arg1: Any, arg2: Any)
-
-    /**
-     * This method is similar to [.info]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker    the marker data specific to this log statement
-     * @param format    the format string
-     * @param arguments a list of 3 or more arguments
-     */
-    fun info(marker: Marker, format: String, vararg arguments: Any)
-
-    /**
-     * This method is similar to [.info] method
-     * except that the marker data is also taken into consideration.
-     *
-     * @param marker the marker data for this log statement
-     * @param msg    the message accompanying the exception
-     * @param t      the exception (throwable) to log
-     */
-    fun info(marker: Marker, msg: String, t: Throwable)
-
-    /**
      * Log a message at the WARN level.
      *
      * @param msg the message string to be logged
@@ -485,8 +279,6 @@ interface LoggerJv {
     /**
      * Log a message at the WARN level according to the specified format
      * and argument.
-     *
-     *
      *
      * This form avoids superfluous object creation when the logger
      * is disabled for the WARN level.
@@ -499,8 +291,6 @@ interface LoggerJv {
     /**
      * Log a message at the WARN level according to the specified format
      * and arguments.
-     *
-     *
      *
      * This form avoids superfluous string concatenation when the logger
      * is disabled for the WARN level. However, this variant incurs the hidden
@@ -517,8 +307,6 @@ interface LoggerJv {
     /**
      * Log a message at the WARN level according to the specified format
      * and arguments.
-     *
-     *
      *
      * This form avoids superfluous object creation when the logger
      * is disabled for the WARN level.
@@ -539,67 +327,6 @@ interface LoggerJv {
     fun warn(msg: String, t: Throwable)
 
     /**
-     * Similar to [.isWarnEnabled] method except that the marker
-     * data is also taken into consideration.
-     *
-     * @param marker The marker data to take into consideration
-     * @return True if this LoggerJv is enabled for the WARN level,
-     * false otherwise.
-     */
-    fun isWarnEnabled(marker: Marker): Boolean
-
-    /**
-     * Log a message with the specific Marker at the WARN level.
-     *
-     * @param marker The marker specific to this log statement
-     * @param msg    the message string to be logged
-     */
-    fun warn(marker: Marker, msg: String)
-
-    /**
-     * This method is similar to [.warn] method except that the
-     * marker data is also taken into consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg    the argument
-     */
-    fun warn(marker: Marker, format: String, arg: Any)
-
-    /**
-     * This method is similar to [.warn]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg1   the first argument
-     * @param arg2   the second argument
-     */
-    fun warn(marker: Marker, format: String, arg1: Any, arg2: Any)
-
-    /**
-     * This method is similar to [.warn]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker    the marker data specific to this log statement
-     * @param format    the format string
-     * @param arguments a list of 3 or more arguments
-     */
-    fun warn(marker: Marker, format: String, vararg arguments: Any)
-
-    /**
-     * This method is similar to [.warn] method
-     * except that the marker data is also taken into consideration.
-     *
-     * @param marker the marker data for this log statement
-     * @param msg    the message accompanying the exception
-     * @param t      the exception (throwable) to log
-     */
-    fun warn(marker: Marker, msg: String, t: Throwable)
-
-    /**
      * Log a message at the ERROR level.
      *
      * @param msg the message string to be logged
@@ -609,8 +336,6 @@ interface LoggerJv {
     /**
      * Log a message at the ERROR level according to the specified format
      * and argument.
-     *
-     *
      *
      * This form avoids superfluous object creation when the logger
      * is disabled for the ERROR level.
@@ -624,8 +349,6 @@ interface LoggerJv {
      * Log a message at the ERROR level according to the specified format
      * and arguments.
      *
-     *
-     *
      * This form avoids superfluous object creation when the logger
      * is disabled for the ERROR level.
      *
@@ -638,8 +361,6 @@ interface LoggerJv {
     /**
      * Log a message at the ERROR level according to the specified format
      * and arguments.
-     *
-     *
      *
      * This form avoids superfluous string concatenation when the logger
      * is disabled for the ERROR level. However, this variant incurs the hidden
@@ -661,66 +382,4 @@ interface LoggerJv {
      * @param t   the exception (throwable) to log
      */
     fun error(msg: String, t: Throwable)
-
-    /**
-     * Similar to [.isErrorEnabled] method except that the
-     * marker data is also taken into consideration.
-     *
-     * @param marker The marker data to take into consideration
-     * @return True if this LoggerJv is enabled for the ERROR level,
-     * false otherwise.
-     */
-    fun isErrorEnabled(marker: Marker): Boolean
-
-    /**
-     * Log a message with the specific Marker at the ERROR level.
-     *
-     * @param marker The marker specific to this log statement
-     * @param msg    the message string to be logged
-     */
-    fun error(marker: Marker, msg: String)
-
-    /**
-     * This method is similar to [.error] method except that the
-     * marker data is also taken into consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg    the argument
-     */
-    fun error(marker: Marker, format: String, arg: Any)
-
-    /**
-     * This method is similar to [.error]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param format the format string
-     * @param arg1   the first argument
-     * @param arg2   the second argument
-     */
-    fun error(marker: Marker, format: String, arg1: Any, arg2: Any)
-
-    /**
-     * This method is similar to [.error]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker    the marker data specific to this log statement
-     * @param format    the format string
-     * @param arguments a list of 3 or more arguments
-     */
-    fun error(marker: Marker, format: String, vararg arguments: Any)
-
-    /**
-     * This method is similar to [.error]
-     * method except that the marker data is also taken into
-     * consideration.
-     *
-     * @param marker the marker data specific to this log statement
-     * @param msg    the message accompanying the exception
-     * @param t      the exception (throwable) to log
-     */
-    fun error(marker: Marker, msg: String, t: Throwable)
 }

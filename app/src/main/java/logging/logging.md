@@ -7,15 +7,18 @@ this may not be as important as for Java because Kotlin support some nice string
 However, to simplify the transition the SLF4J formatting is quite nice.
 
 The Logger framework itself supports log 'appender', that is each log message is handed over
-to an appender which then processes the message. The package includes three appenders:
+to an appender which then processes the message. The package includes two appender in the
+logging package and another one in the example code:
 
 * A simple appender which prints out the formatted message on standard output using println
 * The Android appender output the message using the appropriate Android Log.* functions
-* The ListLogAppender is a simple implementation that stores the latest log messages in a list. An
-  example activity shows how to use this list and to see logs in an application view without using
-  logcat
 
-The application can add or remove appenders at any time.
+As an example how to write an own appender the example code contains the `ListLogAppender`, a simple
+implementation that stores the latest log messages in a list. An small list activity shows how to
+use this list and to see logs in an application view without using logcat. Application may add 
+an appender for example to forward log message to analytic functions or alike.
+
+The application can add or remove an appender at any time.
 
 
 ## Global and/or local logger ##
@@ -115,3 +118,9 @@ release code.
 
 The two implementations are available in `debug/java` and `release/java`respectively as required
 by Android's build setup and merge rules.
+
+
+## Use the logger in normal (non-Android) projects ##
+
+In this case just use the logging package and copy one of the `LoggerImplementationKt` files into
+the logging package. To get full logging use the file from the `debug` sources. 

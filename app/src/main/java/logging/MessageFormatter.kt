@@ -112,9 +112,9 @@ import java.util.HashMap
  * @author Joern Huxhorn
  */
 object MessageFormatter {
-    private val DELIM_START = '{'
-    private val DELIM_STR = "{}"
-    private val ESCAPE_CHAR = '\\'
+    private const val DELIM_START = '{'
+    private const val DELIM_STR = "{}"
+    private const val ESCAPE_CHAR = '\\'
 
     /**
      * Performs single argument substitution for the 'messagePattern' passed as
@@ -185,7 +185,7 @@ object MessageFormatter {
 
     private fun trimmedCopy(argArray: Array<Any?>): Array<Any?> {
         if (argArray.isEmpty()) {
-            throw IllegalStateException("non-sensical empty or null argument array")
+            throw IllegalStateException("non-sensible empty or null argument array")
         }
         val trimmedLen = argArray.size - 1
         val trimmed = arrayOfNulls<Any>(trimmedLen)

@@ -53,28 +53,6 @@ class LoggerImplementationJv internal constructor(override val name: String, pri
         doLogFormatted(Level.ALL, msg, t)
     }
 
-    override fun isTraceEnabled(marker: Marker): Boolean = factory.level == Level.ALL
-
-    override fun trace(marker: Marker, msg: String) {
-        trace(msg)
-    }
-
-    override fun trace(marker: Marker, format: String, arg: Any) {
-        trace(format, arg)
-    }
-
-    override fun trace(marker: Marker, format: String, arg1: Any, arg2: Any) {
-        trace(format, arg1, arg2)
-    }
-
-    override fun trace(marker: Marker, format: String, vararg argArray: Any) {
-        trace(format, *argArray)
-    }
-
-    override fun trace(marker: Marker, msg: String, t: Throwable) {
-        trace(msg, t)
-    }
-
     override val isDebugEnabled: Boolean = Level.DEBUG == factory.level
 
     override fun debug(msg: String) {
@@ -97,28 +75,6 @@ class LoggerImplementationJv internal constructor(override val name: String, pri
         doLogFormatted(Level.DEBUG, msg, t)
     }
 
-    override fun isDebugEnabled(marker: Marker): Boolean = factory.level.isLoggable(Level.DEBUG)
-
-    override fun debug(marker: Marker, msg: String) {
-        debug(msg)
-    }
-
-    override fun debug(marker: Marker, format: String, arg: Any) {
-        debug(format, arg)
-    }
-
-    override fun debug(marker: Marker, format: String, arg1: Any, arg2: Any) {
-        debug(format, arg1, arg2)
-    }
-
-    override fun debug(marker: Marker, format: String, vararg arguments: Any) {
-        debug(format, *arguments)
-    }
-
-    override fun debug(marker: Marker, msg: String, t: Throwable) {
-        debug(msg, t)
-    }
-
     override val isInfoEnabled: Boolean = factory.level.isLoggable(Level.INFO)
 
     override fun info(msg: String) {
@@ -138,28 +94,6 @@ class LoggerImplementationJv internal constructor(override val name: String, pri
     }
 
     override fun info(msg: String, t: Throwable) {
-        doLogFormatted(Level.INFO, msg, t)
-    }
-
-    override fun isInfoEnabled(marker: Marker): Boolean = Level.INFO.isLoggable(factory.level)
-
-    override fun info(marker: Marker, msg: String) {
-        doLogFormatted(Level.INFO, msg, null)
-    }
-
-    override fun info(marker: Marker, format: String, arg: Any) {
-        doLog(Level.INFO, format, arg)
-    }
-
-    override fun info(marker: Marker, format: String, arg1: Any, arg2: Any) {
-        doLog(Level.INFO, format, arg1, arg2)
-    }
-
-    override fun info(marker: Marker, format: String, vararg arguments: Any) {
-        doLog(Level.INFO, format, arguments)
-    }
-
-    override fun info(marker: Marker, msg: String, t: Throwable) {
         doLogFormatted(Level.INFO, msg, t)
     }
 
@@ -185,28 +119,6 @@ class LoggerImplementationJv internal constructor(override val name: String, pri
         doLogFormatted(Level.WARN, msg, t)
     }
 
-    override fun isWarnEnabled(marker: Marker): Boolean = Level.WARN.isLoggable(factory.level)
-
-    override fun warn(marker: Marker, msg: String) {
-        doLogFormatted(Level.WARN, msg, null)
-    }
-
-    override fun warn(marker: Marker, format: String, arg: Any) {
-        doLog(Level.WARN, format, arg)
-    }
-
-    override fun warn(marker: Marker, format: String, arg1: Any, arg2: Any) {
-        doLog(Level.WARN, format, arg1, arg2)
-    }
-
-    override fun warn(marker: Marker, format: String, vararg arguments: Any) {
-        doLog(Level.WARN, format, arguments)
-    }
-
-    override fun warn(marker: Marker, msg: String, t: Throwable) {
-        doLogFormatted(Level.WARN, msg, null)
-    }
-
     override val isErrorEnabled: Boolean = true
 
     override fun error(msg: String) {
@@ -229,25 +141,4 @@ class LoggerImplementationJv internal constructor(override val name: String, pri
         doLogFormatted(Level.ERROR, msg, t)
     }
 
-    override fun isErrorEnabled(marker: Marker): Boolean = true
-
-    override fun error(marker: Marker, msg: String) {
-        doLogFormatted(Level.ERROR, msg, null)
-    }
-
-    override fun error(marker: Marker, format: String, arg: Any) {
-        doLog(Level.ERROR, format, arg)
-    }
-
-    override fun error(marker: Marker, format: String, arg1: Any, arg2: Any) {
-        doLog(Level.ERROR, format, arg1, arg2)
-    }
-
-    override fun error(marker: Marker, format: String, vararg arguments: Any) {
-        doLog(Level.ERROR, format, arguments)
-    }
-
-    override fun error(marker: Marker, msg: String, t: Throwable) {
-        doLogFormatted(Level.ERROR, msg, t)
-    }
 }

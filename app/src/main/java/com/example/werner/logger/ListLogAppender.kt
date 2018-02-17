@@ -15,6 +15,9 @@ import java.util.*
 
 class ListLogAppender : LoggerAppender {
 
+    /**
+     * Get a mutable copy of the current log list
+     */
     val logMessages: MutableList<String>
         get() = ArrayList(mLogList)
 
@@ -51,7 +54,7 @@ class ListLogAppender : LoggerAppender {
     companion object {
 
         private val timeFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.getDefault())
-        private val MAX_MESSAGES_IN_LIST = 200
+        private const val MAX_MESSAGES_IN_LIST = 200
         private val mLogList = ArrayList<String>(MAX_MESSAGES_IN_LIST + 1)
     }
 }

@@ -1,6 +1,7 @@
 package com.example.werner.logger
 
 import android.app.Application
+import android.content.Context
 import logging.LoggerFactory
 
 /**
@@ -20,11 +21,9 @@ class LoggerApp : Application() {
 
     companion object {
         private lateinit var INSTANCE: LoggerApp
-        fun appContext() = INSTANCE.applicationContext
+        fun appContext(): Context = INSTANCE.applicationContext
 
         val logger = LoggerFactory()
         val listLogAppender = ListLogAppender()
-
-
     }
 }

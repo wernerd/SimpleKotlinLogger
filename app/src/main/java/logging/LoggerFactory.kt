@@ -1,8 +1,5 @@
 package logging
 
-import com.example.werner.logger.ListLogAppender
-import java.util.HashSet
-
 class LoggerFactory {
     private val simpleLogAppender = SimpleLogAppender()
     private val androidLogAppender = AndroidLogAppender()

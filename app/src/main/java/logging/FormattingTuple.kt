@@ -11,5 +11,4 @@ package logging
  *
  * @author Joern Huxhorn
  */
-class FormattingTuple
-@JvmOverloads internal constructor(val message: String, val argArray: Array<Any?>? = null, val throwable: Throwable? = null)
+class FormattingTuple internal constructor(val message: String, val argArray: Array<Any?>? = null, val throwable: Throwable? = null)
