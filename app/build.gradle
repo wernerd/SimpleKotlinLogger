@@ -45,7 +45,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.werner.logger"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -60,6 +60,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+//        compileKotlin {
+//            kotlinOptions {
+//                jvmTarget = "1.8"
+//            }
+//        }
     }
 }
 
@@ -72,4 +77,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+}
+
+// Use this if the same option applies to _all_ builds
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

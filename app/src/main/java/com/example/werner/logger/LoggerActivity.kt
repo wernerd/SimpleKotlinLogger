@@ -16,8 +16,10 @@
 
 package com.example.werner.logger
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_logger.*
 
 class LoggerActivity : AppCompatActivity() {
 
@@ -30,5 +32,9 @@ class LoggerActivity : AppCompatActivity() {
         log.debug { "This is a simple string" }
         log.debug ({"A slf4j format {} and {}"}, {arrayOf(this, universalAnswer)})
         log.debug {"A string using Kotlin format $this and $universalAnswer"}
+
+        showLog.setOnClickListener({
+            val intent = Intent(this, ShowListActivity::class.java)
+            startActivity(intent)})
     }
 }
