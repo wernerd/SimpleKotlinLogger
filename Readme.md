@@ -13,7 +13,7 @@ logging package and another one in the example code:
 * A simple appender which prints out the formatted message on standard output using println
 * The Android appender output the message using the appropriate Android Log.* functions
 
-As an example how to write an own appender the example code contains the `ListLogAppender`, a simple
+As an example how to implement an own appender the example code contains `ListLogAppender`, a simple
 implementation that stores the latest log messages in a list. An small list activity shows how to
 use this list and to see logs in an application view without using logcat. Application may add 
 an appender for example to forward log message to analytic functions or alike.
@@ -92,7 +92,7 @@ Android's Application. In the companion object of that class just initialize a `
         }
     }
 
-Now each other class can get the application's global logger and use it, for example in a simple
+Now each other class can get the application's global logger and use it, for example in an
 Android Activity:
 
     class LoggerActivity : AppCompatActivity() {
@@ -111,7 +111,7 @@ Android Activity:
 
 ### Debug and release builds ###
 
-For Android the logger provides two implementations, one for debugging and one for release builds.
+For Android the logger provides two implementations, one for debug and one for release builds.
 In the implementation for release builds the `debug`, `trace`, `info` functions are empty, thus the
 compiler optimizes them out. Therefore debugging data such as debugging strings are removed from
 release code.

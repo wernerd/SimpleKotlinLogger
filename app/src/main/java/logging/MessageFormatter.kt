@@ -20,15 +20,12 @@
  * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
  * OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/* Class copied from slf4j
  *
- * Class copied from slf4j
- *
- * The Comfy logger does not use the full slf4j functionality, just this class
- * and the tuple helper class. Added the function 'report' to remove a dependency
- * on slf4j's Util class.
- *
- * To reduce dependencies just copy these classes and remove slf4j dependency in
- * the build.
+ * This logger does not use the full slf4j functionality, just this class
+ * and the tuple helper class.
  *
  * Created/modified by werner on 22.11.17.
  */
