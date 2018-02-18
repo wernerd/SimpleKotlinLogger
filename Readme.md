@@ -1,17 +1,25 @@
 # Package logging
 
-This package implements a Kotlin logger that also supports SLF4J formatting.
+This little project implements a Kotlin logger that also supports SLF4J formatting. I extracted the
+code from some other projects I did, cleaned it, added some documentation and created an own small
+project.  It's a **simple, no frills** logging, however I can add some features (via appender code)
+to add project specific functions, for example reporting to code analysis (Crashlytics for example).
+The footprint is very small, actually I don't like loggers that a complex by itself :-) .
 
-The implementation provides function to use a SLF4J formatting to format logging data. For Kotlin 
-this may not be as important as for Java because Kotlin support some nice string formatting features.
-However, to simplify the transition the SLF4J formatting is quite nice.
+The implementation provides functions to use a SLF4J formatting style to format logging data. For
+Kotlin this may not be as important as for Java because Kotlin supports some nice string formatting
+features. However, to simplify transition the SLF4J formatting is quite nice.
 
-The Logger framework itself supports log 'appender', that is each log message is handed over
+The Logger framework itself supports log *appender*, that is each log message is handed over
 to an appender which then processes the message. The package includes two appender in the
 logging package and another one in the example code:
 
-* A simple appender which prints out the formatted message on standard output using println
-* The Android appender output the message using the appropriate Android Log.* functions
+* A simple appender which prints out the formatted message on standard output using println, ready
+  to go in unit tests.
+* The Android appender outputs the message using the appropriate Android Log functions.
+
+The `LoggerFactory` has two functions that switch the appender between normal Android use and use
+for unit tests. 
 
 As an example how to implement an own appender the example code contains `ListLogAppender`, a simple
 implementation that stores the latest log messages in a list. An small list activity shows how to
@@ -32,9 +40,10 @@ logger it should instantiate its own `LoggerFactory` and use it and not change t
 
 ## The logging functions ##
 
-The logger has the usual loggeing functions, such as `debug`, `warning` etc. Each functions comes 
+The logger has the usual logging functions, such as `debug`, `warning` etc. Each functions comes 
 in two flavours. The first one just accepts a lambda as its parameter and the lambda must return
-a string. This is probably the most used variant:
+a string. Thus you can use every lambda function that returns a string. This is probably the most
+used variant:
 
     inline fun debug(msg: () -> String) {
         doLogFormatted(Level.DEBUG, msg(), null)
@@ -46,10 +55,10 @@ Standard usage:
     ...
     LOG.debug {"This is a simple string"}
     ...
-    universalAnswer = 42
+    val universalAnswer = 42
     LOG.debug {"A string using Kotlin format $this and $universalAnswer"}
     
-The second debug call uses the build-in Kotlin string formatting which may replace the SLF4J
+The second debug call uses the Kotlin build-in string formatting which may replace the SLF4J
 formatting in many cases.
 
 The second variant of the logger functions accept a second parameter, a lambda that returns an 
@@ -62,9 +71,9 @@ that the formatter uses to setup the logging message
 
 The typical example is:
 
-     LOG.debug ({"A slf4j format {} and {}"}, {arrayOf(this, universalAnswer)})
+     LOG.debug ({"A slf4j format with {} and {}"}, {arrayOf(this, universalAnswer)})
 
-The debug logging call shows the same values as the string formatted with Kotlin.
+This debug logging call shows the same two values as the string formatted with Kotlin.
  
 Using Kotlin formatting may produces less overhead. The Kotlin compiler produces a sequence of 
 `StringBuilder.append` calls the create the formatted string, the SLF4J formatter is more complex.
@@ -72,8 +81,8 @@ Using Kotlin formatting may produces less overhead. The Kotlin compiler produces
 
 ## Setup of the logger in Android ##
 
-The most simple way to setup the logger is to create an application class which inherits from
-Android's Application. In the companion object of that class just initialize a `val` with the 
+The most simple way to setup the logger is to create or extend an application class which inherits
+from Android's Application. In the companion object of that class just initialize a `val` with the 
 `LoggerFactory` and in `onCreate()` configure the logger for Android. Example code:
 
     class LoggerApp : Application() {
@@ -109,18 +118,20 @@ Android Activity:
         }
     }
 
+
 ### Debug and release builds ###
 
-For Android the logger provides two implementations, one for debug and one for release builds.
+For Android the logger provides two implementations, one for *debug* and one for *release* builds.
 In the implementation for release builds the `debug`, `trace`, `info` functions are empty, thus the
 compiler optimizes them out. Therefore debugging data such as debugging strings are removed from
 release code.
 
-The two implementations are available in `debug/java` and `release/java`respectively as required
-by Android's build setup and merge rules.
+The two implementations are available in `debug/kotlin` and `release/kotlin` respectively as
+required by Android's build setup and merge rules.
 
 
 ## Use the logger in normal (non-Android) projects ##
 
 In this case just use the logging package and copy one of the `LoggerImplementationKt` files into
-the logging package. To get full logging use the file from the `debug` sources. 
+the logging package. To get full logging use the file from the `debug` sources. You may also create
+and add another appender that forwards/outputs the log data as needed.

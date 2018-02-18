@@ -29,8 +29,9 @@ class LoggerFactory {
     }
 
     /**
-     * Return an appropriate [LoggerJv] instance as specified by the
-     * `name` parameter.
+     * Return an appropriate Java [LoggerJv] logger instance as specified by the `name` parameter.
+     *
+     * This logger instance provides the logger functions for Java.
      *
      * Null-valued name arguments are considered invalid.
      *
@@ -45,8 +46,7 @@ class LoggerFactory {
 
 
     /**
-     * Return an appropriate Kotlin [LoggerKt] instance as specified by the
-     * `name` parameter.
+     * Return an appropriate Kotlin [LoggerKt] logger instance as specified by the `name` parameter.
      *
      * Null-valued name arguments are considered invalid.
      *

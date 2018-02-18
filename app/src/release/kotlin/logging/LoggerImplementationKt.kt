@@ -16,8 +16,8 @@
 
 package logging
 
-@Suppress("UNUSED_PARAMETER", "unused")
-class LoggerImplementationKt internal constructor(override val name: String, private val factory: ComfyLogFactory) : LoggerKt {
+@Suppress("unused")
+class LoggerImplementationKt internal constructor(override val name: String, private val factory: LoggerFactory) : LoggerKt {
 
     fun doLogFormatted(level: Level, message: String, throwable: Throwable?) {
         for (appender in factory.appenders) {
@@ -41,7 +41,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
         }
     }
 
-    override val isTraceEnabled: Boolean = factory.level == Level.ALL
+    override fun isTraceEnabled() = false
 
     inline fun trace(msg: () -> String) {}
 
@@ -49,7 +49,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
 
     inline fun trace(msg: () -> String, t: Throwable) {}
 
-    override val isDebugEnabled: Boolean = Level.DEBUG == factory.level
+    override fun isDebugEnabled() = false
 
     inline fun debug(msg: () -> String) {}
 
@@ -57,7 +57,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
 
     inline fun debug(msg: () -> String, t: Throwable) {}
 
-    override val isInfoEnabled: Boolean = factory.level.isLoggable(Level.INFO)
+    override fun isInfoEnabled() = false
 
     inline fun info(msg: () -> String) {}
 
@@ -65,7 +65,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
 
     inline fun info(msg: () -> String, t: Throwable) {}
 
-    override val isWarnEnabled: Boolean = false
+    override fun isWarnEnabled() = Level.WARN.isLoggable(factory.level)
 
     inline fun warn(msg: () -> String) {
         doLogFormatted(Level.WARN, msg(), null)
@@ -79,7 +79,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
         doLogFormatted(Level.WARN, msg(), t)
     }
 
-    override val isErrorEnabled: Boolean = true
+    override fun isErrorEnabled() = Level.ERROR.isLoggable(factory.level)
 
     inline fun error(msg: () -> String) {
         doLogFormatted(Level.ERROR, msg(), null)

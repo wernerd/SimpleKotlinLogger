@@ -75,7 +75,7 @@ interface LoggerKt {
      * false otherwise.
      * @since 1.4
      */
-    val isTraceEnabled: Boolean
+    fun isTraceEnabled() : Boolean
 
     /**
      * Is the logger instance enabled for the DEBUG level?
@@ -83,7 +83,7 @@ interface LoggerKt {
      * @return True if this LoggerJv is enabled for the DEBUG level,
      * false otherwise.
      */
-    val isDebugEnabled: Boolean
+    fun isDebugEnabled() : Boolean
 
     /**
      * Is the logger instance enabled for the INFO level?
@@ -91,7 +91,7 @@ interface LoggerKt {
      * @return True if this LoggerJv is enabled for the INFO level,
      * false otherwise.
      */
-    val isInfoEnabled: Boolean
+    fun isInfoEnabled() : Boolean
 
     /**
      * Is the logger instance enabled for the WARN level?
@@ -99,7 +99,7 @@ interface LoggerKt {
      * @return True if this LoggerJv is enabled for the WARN level,
      * false otherwise.
      */
-    val isWarnEnabled: Boolean
+    fun isWarnEnabled() : Boolean
 
     /**
      * Is the logger instance enabled for the ERROR level?
@@ -107,5 +107,5 @@ interface LoggerKt {
      * @return True if this LoggerJv is enabled for the ERROR level,
      * false otherwise.
      */
-    val isErrorEnabled: Boolean
+    fun isErrorEnabled() : Boolean
 }

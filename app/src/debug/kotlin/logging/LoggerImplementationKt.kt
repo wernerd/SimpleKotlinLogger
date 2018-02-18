@@ -41,7 +41,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
         }
     }
 
-    override val isTraceEnabled: Boolean = factory.level == Level.ALL
+    override fun isTraceEnabled() = Level.ALL.isLoggable(factory.level)
 
     inline fun trace(msg: () -> String) {
         doLogFormatted(Level.ALL, msg(), null)
@@ -55,7 +55,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
         doLogFormatted(Level.ALL, msg(), t)
     }
 
-    override val isDebugEnabled: Boolean = Level.DEBUG == factory.level
+    override fun isDebugEnabled() = Level.DEBUG.isLoggable(factory.level)
 
     inline fun debug(msg: () -> String) {
         doLogFormatted(Level.DEBUG, msg(), null)
@@ -72,7 +72,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
         doLogFormatted(Level.DEBUG, msg(), t)
     }
 
-    override val isInfoEnabled: Boolean = factory.level.isLoggable(Level.INFO)
+    override fun isInfoEnabled() = Level.INFO.isLoggable(factory.level)
 
     inline fun info(msg: () -> String) {
         doLogFormatted(Level.INFO, msg(), null)
@@ -86,7 +86,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
         doLogFormatted(Level.INFO, msg(), t)
     }
 
-    override val isWarnEnabled: Boolean = false
+    override fun isWarnEnabled() = Level.WARN.isLoggable(factory.level)
 
     inline fun warn(msg: () -> String) {
         doLogFormatted(Level.WARN, msg(), null)
@@ -100,7 +100,7 @@ class LoggerImplementationKt internal constructor(override val name: String, pri
         doLogFormatted(Level.WARN, msg(), t)
     }
 
-    override val isErrorEnabled: Boolean = true
+    override fun isErrorEnabled() = Level.ERROR.isLoggable(factory.level)
 
     inline fun error(msg: () -> String) {
         doLogFormatted(Level.ERROR, msg(), null)

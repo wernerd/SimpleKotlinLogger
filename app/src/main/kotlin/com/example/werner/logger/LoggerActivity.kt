@@ -20,6 +20,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_logger.*
+import logging.Level
 
 class LoggerActivity : AppCompatActivity() {
 
@@ -32,6 +33,16 @@ class LoggerActivity : AppCompatActivity() {
         log.debug { "This is a simple string" }
         log.debug ({"A slf4j format {} and {}"}, {arrayOf(this, universalAnswer)})
         log.debug {"A string using Kotlin format $this and $universalAnswer"}
+
+        if (BuildConfig.BUILD_TYPE.equals("debug")) {
+            log.debug { "This should be true: ${log.isDebugEnabled()}" }
+            LoggerApp.logger.level = Level.WARN
+            log.debug { "This should be false: ${log.isDebugEnabled()}" }
+        }
+
+        if (BuildConfig.BUILD_TYPE.equals("release")) {
+            log.warn { "This should be false: ${log.isDebugEnabled()}" }
+        }
 
         showLog.setOnClickListener({
             val intent = Intent(this, ShowListActivity::class.java)
