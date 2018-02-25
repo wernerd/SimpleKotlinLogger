@@ -28,7 +28,7 @@ an appender for example to forward log message to analytic functions or alike.
 
 The application can add or remove an appender at any time.
 
-If you like to use it - the implementation uses an Apache License 2.0, see below.
+If you like to use it - the implementation uses an Apache License 2.0, see License file.
 
 
 ## Global and/or local loggers ##
@@ -137,21 +137,4 @@ required by Android's build setup and merge rules.
 In this case just use the logging package and copy one of the `LoggerImplementationKt` files into
 the logging package. To get full logging use the file from the `debug` sources. You may also create
 and add another appender that forwards/outputs the log data as needed.
-
-
-## License ##
-
-Copyright 2018, Werner Dittmann
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
 
