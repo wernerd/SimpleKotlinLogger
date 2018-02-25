@@ -1,10 +1,10 @@
-# Package logging
+# Module logging
 
 This little project implements a Kotlin logger that also supports SLF4J formatting. I extracted the
 code from some other projects I did, cleaned it, added some documentation and created an own small
 project.  It's a **simple, no frills** logging, however I can add some features (via appender code)
 to add project specific functions, for example reporting to code analysis (Crashlytics for example).
-The footprint is very small, actually I don't like loggers that a complex by itself :-) .
+The footprint is very small, actually I don't like loggers that are complex by itself :-) .
 
 The implementation provides functions to use a SLF4J formatting style to format logging data. For
 Kotlin this may not be as important as for Java because Kotlin supports some nice string formatting
@@ -28,8 +28,10 @@ an appender for example to forward log message to analytic functions or alike.
 
 The application can add or remove an appender at any time.
 
+If you like to use it - the implementation uses an Apache License 2.0, see below.
 
-## Global and/or local logger ##
+
+## Global and/or local loggers ##
 
 An application can instantiate many `LoggerFactory` objects and configure them as needed. Usually
 an application just initializes a global `LoggerFactory` object and makes it available to other
@@ -135,3 +137,21 @@ required by Android's build setup and merge rules.
 In this case just use the logging package and copy one of the `LoggerImplementationKt` files into
 the logging package. To get full logging use the file from the `debug` sources. You may also create
 and add another appender that forwards/outputs the log data as needed.
+
+
+## License ##
+
+Copyright 2018, Werner Dittmann
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
